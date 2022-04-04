@@ -1,0 +1,25 @@
+{% extends "portales/layout.html" %}
+
+{% block body %}
+
+  {% if message %}
+    <p>{{ message }}</p>
+  {% endif %}
+
+  <form action="{% url 'edit_design' %}" method="post">
+    {% csrf_token %}
+
+    <label for="url">URL: </label>
+    {% if design %}
+      <input type="text" name="url" placeholder="URL..." value="{{ design }}">
+    {% else %}
+      <input type="text" name="url" placeholder="URL...">
+    {% endif %}
+
+    <br>
+
+    <input type="submit" value="Submit">
+
+  </form>
+
+{% endblock %}

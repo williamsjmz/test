@@ -1,0 +1,19 @@
+{% extends "portales/layout.html" %}
+
+{% block body %}
+
+  {% if pages %}
+
+    <ul>
+
+      {% for page in pages %}
+
+        <li><a href="{% url 'show_page' page.id %}">{{ page }}</a></li>
+
+      {% endfor %}
+
+    </ul>
+
+  {% endif %}
+
+{% endblock %}

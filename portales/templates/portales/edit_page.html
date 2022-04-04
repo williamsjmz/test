@@ -1,0 +1,27 @@
+{% extends "portales/layout.html" %}
+
+{% block body %}
+
+  {% if message %}
+    <p>{{ message }}</p>
+  {% endif %}
+
+  {% if page %}
+    <form action="{% url 'edit_page' page.id %}" method="post">
+      {% csrf_token %}
+
+      <label for="title">Title: </label>
+      <input type="text" name="title" placeholder="Title..." value="{{ page.title }}">
+
+      <br>
+
+      <label for="body">Body: </label>
+      <textarea name="body" id="body" cols="30" rows="10" placeholder="Type something here...">{{ page.body }}</textarea>
+
+      <br>
+
+      <input type="submit" value="Submit">
+
+    </form>
+  {% endif %}
+{% endblock %}
